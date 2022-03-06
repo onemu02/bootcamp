@@ -33,7 +33,7 @@ actor {
   };
 
   public func divide(x : Nat, y : Nat) : async Bool{
-    return (x % y) == 0;
+    return (y != 0) and ((x % y) == 0);
   };
 
   public func is_even(n : Nat) : async Bool{
