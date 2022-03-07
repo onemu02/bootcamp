@@ -6,3 +6,7 @@
 # Mac OSX temporary files
 .DS_Store
 **/.DS_Store
+
+solutions/day_1/.dfx/
+solutions/day_2/.dfx/
+solutions/day_2/day_2_assets/
