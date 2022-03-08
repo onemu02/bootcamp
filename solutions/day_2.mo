@@ -1,4 +1,6 @@
 import Nat "mo:base/Nat";
+import Order "mo:base/Order";
+import Option "mo:base/Option";
 import Bool "mo:base/Bool";
 import Nat32 "mo:base/Nat32";
 import Text "mo:base/Text";
@@ -110,19 +112,26 @@ actor {
 
    // challenge 9
    public func size_in_bytes(t : Text) : async Nat{
-     var byte_size : Nat = 0;
-     for(c in Text.toIter(t)){
-       let m : Nat32 = Char.toNat32(c);
-       let bit : Text = await decimal_to_bits(Nat32.toNat(m));
-       let bit_size : Nat = bit.size();
-       var byte : Nat = bit_size/8;
-       switch((bit_size % 8) == 0){
-         case(true) byte := (bit_size/8); 
-         case(false) byte := ((bit_size/8)+1); 
-       };
-       Debug.print(Char.toText(c)# " "# bit # " "#Nat.toText(bit_size) # "  " # Nat.toText(byte));
-       byte_size += byte;
-     }; 
-     return byte_size;
+     return Text.encodeUtf8(t).size();
    };
+
+   // challenge 10
+   public func bubble_sort(array: [Nat]) : async [Nat]{
+     var sorted_array : Buffer.Buffer<Nat> = Buffer.Buffer(array.size());
+     for(v in array.vals()){ sorted_array.add(v) };
+
+     for(i in Iter.range(1, (sorted_array.size()))){
+       for(j in Iter.range(0, (sorted_array.size()-i-1))){
+         let is_less : Bool = Order.isLess(Nat.compare(sorted_array.get(j), sorted_array.get(j+1)));
+         if(is_less == false){
+           var tmp : Nat = sorted_array.get(j);
+           Debug.print(Nat.toText(tmp));
+           sorted_array.put(j, sorted_array.get(j+1));
+           sorted_array.put(j+1, tmp);
+         };
+       };
+     };
+     return sorted_array.toArray();
+   };
+
 };
