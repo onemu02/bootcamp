@@ -125,7 +125,6 @@ actor {
          let is_less : Bool = Order.isLess(Nat.compare(sorted_array.get(j), sorted_array.get(j+1)));
          if(is_less == false){
            var tmp : Nat = sorted_array.get(j);
-           Debug.print(Nat.toText(tmp));
            sorted_array.put(j, sorted_array.get(j+1));
            sorted_array.put(j+1, tmp);
          };
