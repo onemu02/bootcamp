@@ -7,8 +7,9 @@
 .DS_Store
 **/.DS_Store
 
+# dfx temporary files
+.dfx/
 
-# Replica files and configuration
-.dfx
-**/.dfx
->>>>>>> 97060deededb87785b0ac982407c30b7d7ff15bc
+# frontend code
+node_modules/
+dist/
