@@ -30,6 +30,8 @@ actor {
     var bits_text : Text = "";
     var _n: Nat = n;
 
+    if (n==0) return "0";
+
     while (_n > 0){
       bits_text := Text.concat(Nat.toText(_n % 2), bits_text);
       _n := _n / 2;
