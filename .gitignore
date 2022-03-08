@@ -11,4 +11,5 @@
 # Replica files and configuration
 .dfx
 **/.dfx
->>>>>>> 97060deededb87785b0ac982407c30b7d7ff15bc
+
+**/.vessel
