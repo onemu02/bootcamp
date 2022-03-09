@@ -308,7 +308,7 @@ actor {
     };
 
     public func riddle(array : [Nat]) : async [Nat] {
-        return(Array.map<Nat>(array, f));
+        return(Array.map<Nat, Nat>(array, f));
     };
 };
 ```
@@ -316,7 +316,7 @@ actor {
 <details>
         <summary style="color:green"> 🤔 What do you think <strong> riddle([0, 0, 0, 0]) </strong> will return ? </summary>
         <br/>    
-        A new array where all values have been increased by one : <strong> [1, 1, 1]</strong>.
+        A new array where all values have been increased by one : <strong> [1, 1, 1, 1]</strong>.
 		<br/> <br/>
     </details>
 	<br/>
