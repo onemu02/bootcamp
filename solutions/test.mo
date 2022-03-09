@@ -1,7 +1,12 @@
 import Debug "mo:base/Debug";
+import Nat "mo:base/Nat";
+import Animal "day_4/animal";
 
-Debug.print("First");
-assert(3 == 3);
-Debug.print("Second");
-assert(3 == 2);
-Debug.print("Third");
+let a : Animal.Animal = {
+    speice = "test";
+    energy = 2;
+};
+let b : Animal.Animal = Animal.animal_sleep(a);
+assert(b.energy == 12);
+Debug.print("OK");
+assert(b.energy == 10);
