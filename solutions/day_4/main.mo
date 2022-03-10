@@ -42,8 +42,8 @@ actor {
         animal_list := List.append(animal_list, new_animal);
     };
 
-    public func get_animal(): async List<Animal>{
-        return animal_list;
+    public func get_animal(): async [Animal]{
+        return List.toArray(animal_list);
     };
 
 }
