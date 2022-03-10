@@ -11,6 +11,14 @@ actor {
     // challenge 2
     let favoriteNumber : HashMap.HashMap<Principal, Nat> = HashMap.HashMap<Principal, Nat>(0, Principal.equal, Principal.hash);
 
+    // challenge 3
+    public shared({caller}) func add_favorite_number(n: Nat): async(){
+        favoriteNumber.put(caller, n);
+    };
+
+    public shared({caller}) func show_favorite_number(): async ?Nat{
+        favoriteNumber.get(caller);
+    };
 
 
 }
