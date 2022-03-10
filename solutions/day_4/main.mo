@@ -38,8 +38,7 @@ actor {
 
     // Challenge 6
     public func push_animal(a: Animal): async (){
-        let new_animal : List<Animal> = List.fromArray<Animal>([a]);
-        animal_list := List.append(animal_list, new_animal);
+        animal_list := List.push(a, animal_list);
     };
 
     public func get_animal(): async [Animal]{
