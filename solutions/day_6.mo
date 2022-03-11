@@ -1,5 +1,6 @@
 import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
+import List "mo:base/List";
 import Principal "mo:base/Principal";
 import Result "mo:base/Result";
 import Nat "mo:base/Nat";
@@ -46,6 +47,18 @@ actor {
             };
             case null { #err("Transfer Error")};
         }
+    };
+
+    // Challenge 5
+    public type List<TokenIndex> = ?(TokenIndex, List<TokenIndex>);
+    public shared({caller}) func balance(): async List.List<TokenIndex>{
+        var tokens : List<TokenIndex> = List.nil<TokenIndex>(); 
+        for((k, v) in registry.entries()){
+            if(v == caller) { 
+                tokens := List.push<TokenIndex>(k, tokens);
+            };
+        };
+        return tokens;
     };
 
 }
