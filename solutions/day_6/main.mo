@@ -1,10 +1,13 @@
 import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
 import List "mo:base/List";
+import Text "mo:base/Text";
 import Principal "mo:base/Principal";
 import Result "mo:base/Result";
+import Option "mo:base/Option";
 import Nat "mo:base/Nat";
 import Debug "mo:base/Debug";
+import HTTP "http";
 
 actor {
 
@@ -39,14 +42,17 @@ actor {
 
     // Challenge 4
     public func transfer(to: Principal, tokenIndex: Nat): async Result.Result<Text, Text>{
-        switch(registry.get(tokenIndex)){
-            case (_) {
+        let principal_ : ?Principal = registry.get(tokenIndex);
+        switch(principal_){
+            case (?_) {
                 let before_princpal : ?Principal = registry.remove(tokenIndex);
                 registry.put(tokenIndex, to);
                 #ok("Transfer Success");
             };
-            case null { #err("Transfer Error")};
-        }
+            case (null) {
+                #err("Transfer Error");
+            };
+        };
     };
 
     // Challenge 5
@@ -60,5 +66,23 @@ actor {
         };
         return tokens;
     };
+
+    // Challenge 6
+    public query func http_request(request: HTTP.Request) : async HTTP.Response{
+        return {
+            body = Text.encodeUtf8(
+                "mint num: " # Nat.toText(nextTokenIndex) #
+                ", latest principal : " # Principal.toText(
+                    Option.unwrap(
+                        registry.get(nextTokenIndex-1)
+                    )
+                )
+            );
+            headers = [("Content-Type", "text/html; charset=UTF-8")];
+            status_code = 200 : Nat16;
+            streaming_strategy = null;
+        };
+    };
+
 
 }
