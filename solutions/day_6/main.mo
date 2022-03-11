@@ -22,7 +22,7 @@ actor {
     let registry : HashMap.HashMap<TokenIndex, Principal> = HashMap.HashMap<TokenIndex, Principal>(0, Nat.equal, Hash.hash);
 
 
-    // Challenge 3
+    // Challenge 3 and 7
     stable var nextTokenIndex : Nat = 0;
     public shared({caller}) func mint() : async Result.Result<Text, Text>{
         switch(Principal.toText(caller) == "2vxsx-fae"){
