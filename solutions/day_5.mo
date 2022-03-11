@@ -62,4 +62,10 @@ actor {
         }
     };
 
+
+    // Challenge 6
+    public func deposit_cycles() : async Nat {
+        return (Cycles.balance());
+    };
+
 }
