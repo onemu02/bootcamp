@@ -36,4 +36,16 @@ actor {
         return nextTokenIndex;
     };
 
+    // Challenge 4
+    public func transfer(to: Principal, tokenIndex: Nat): async Result.Result<Text, Text>{
+        switch(registry.get(tokenIndex)){
+            case (_) {
+                let before_princpal : ?Principal = registry.remove(tokenIndex);
+                registry.put(tokenIndex, to);
+                #ok("Transfer Success");
+            };
+            case null { #err("Transfer Error")};
+        }
+    };
+
 }
