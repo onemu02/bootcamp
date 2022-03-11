@@ -1,4 +1,4 @@
-# Challenge : day 5
+# Challenge : day 5 🦆
 
 # Prerequisites ✅
 
@@ -30,11 +30,11 @@
   Note : You need two canisters. <br/>
   Note 2 : Don't do that in production without admin protection or your might be the target of a **cycle draining** attack.
 
-- Challenge 8 : Rewrite the counter (of day 1) but this time the counter will be kept accross ugprades. Also declare a variable of type \*\*Nat¨¨ called version_number that will keep track of how many times your canister has been upgraded.
+- Challenge 8 : Rewrite the counter (of day 1) but this time the counter will be kept accross ugprades. Also declare a variable of type **Nat** called versionNumber that will keep track of how many times your canister has been upgraded.
 
 - Challenge 9 : In a new file, copy and paste the functionnalities you've created in challenges 2 to 5. This time the hashmap and all records should be preserved accross upgrades.
 
-- Challenge 10 (optionale) : In autonomy, write a CRUD canister, you can add as much functionnalities as you want, a few examples :
+- Challenge 10 (optional) : In autonomy, write a CRUD canister, you can add as much functionnalities as you want, a few examples :
 
   - Anonymous principal rejection.
   - Cycle functionnality for registration.
