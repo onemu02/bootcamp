@@ -3,6 +3,8 @@ import HashMap "mo:base/HashMap";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
 import Nat "mo:base/Nat";
+import Cycles "mo:base/ExperimentalCycles";
+
 
 actor {
 
@@ -66,6 +68,20 @@ actor {
     // Challenge 6
     public func deposit_cycles() : async Nat {
         return (Cycles.balance());
+    };
+
+
+    // Challenge 8
+    stable var versionNumber : Nat = 0;
+    stable var counterValue : Nat = 0;
+
+    public func update(updateNumber: Nat) : async () {
+        counterValue:= updateNumber;
+    };
+
+    // test for Challenge 8
+    public func configCounter() : async Nat {
+        counterValue;
     };
 
 }
