@@ -1,7 +1,9 @@
 import HashMap "mo:base/HashMap";
 import Hash "mo:base/Hash";
 import Principal "mo:base/Principal";
+import Result "mo:base/Result";
 import Nat "mo:base/Nat";
+import Debug "mo:base/Debug";
 
 actor {
 
@@ -15,5 +17,23 @@ actor {
     // Challenge 2
     let registry : HashMap.HashMap<TokenIndex, Principal> = HashMap.HashMap<TokenIndex, Principal>(0, Nat.equal, Hash.hash);
 
+
+    // Challenge 3
+    stable var nextTokenIndex : Nat = 0;
+    public shared({caller}) func mint() : async Result.Result<Text, Text>{
+        switch(Principal.toText(caller) == "2vxsx-fae"){
+            case true { #err("Error: because of anonymous principal")};
+            case false { 
+                registry.put(nextTokenIndex, caller);
+                nextTokenIndex += 1;
+                #ok("Your mint success !!")
+            };
+        };
+    };
+
+    public func show_next_token_index(): async Nat{
+        // Debug.print("show next token index");
+        return nextTokenIndex;
+    };
 
 }
