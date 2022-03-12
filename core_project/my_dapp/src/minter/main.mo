@@ -41,7 +41,9 @@ actor class DRC721(_name : Text, _symbol : Text) {
         return _entries.toArray();
     };
 
-
+    public shared func configTokenPk() : async Nat{
+        return tokenPk;
+    };
 
     public shared func ownerOf(tokenId : T.TokenId) : async ?Principal {
         return _ownerOf(tokenId);

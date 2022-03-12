@@ -3,6 +3,7 @@ service : {
   approve: (principal, TokenId) -> ();
   balanceOf: (principal) -> (opt nat);
   balanceOfAll: (principal) -> (vec opt nat);
+  configTokenPk: () -> (nat);
   getApproved: (nat) -> (principal);
   isApprovedForAll: (principal, principal) -> (bool);
   mint: (text) -> (nat);

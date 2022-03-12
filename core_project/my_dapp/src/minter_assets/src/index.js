@@ -35,11 +35,14 @@ async function plug_login() {
     console.log(`Plug's user principal Id is ${principalId}`);
     console.log(`The connected user's public key is:`, connected);
 
+    // config minted num
+    const num = await minter.configTokenPk();
+    document.getElementById("quantity").innerText = "minted num:  " + String(num);
+
   } catch (e) {
     console.log(e);
   }
 }
-
 
 // For beginners : This is really basic Javascript code that add an event to the "Mint" button so that the mint_nft function is called when the button is clicked.
 const mint_button = document.getElementById("mint");
@@ -61,6 +64,10 @@ async function mint_nft() {
   const mintId = await minter.mint_principal(name, principal);
   console.log("The id is " + Number(mintId));
   // Get the id of the minted image.
+
+  // config minted num
+  const num = await minter.configTokenPk();
+  document.getElementById("quantity").innerText = "minted num:  " + String(num);
 
   // Get the url by asking the minter contract.
   document.getElementById("nft").src = await minter.tokenURI(mintId);

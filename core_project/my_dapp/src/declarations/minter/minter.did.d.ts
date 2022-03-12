@@ -3,6 +3,7 @@ export interface DRC721 {
   'approve' : (arg_0: Principal, arg_1: TokenId) => Promise<undefined>,
   'balanceOf' : (arg_0: Principal) => Promise<[] | [bigint]>,
   'balanceOfAll' : (arg_0: Principal) => Promise<Array<[] | [bigint]>>,
+  'configTokenPk' : () => Promise<bigint>,
   'getApproved' : (arg_0: bigint) => Promise<Principal>,
   'isApprovedForAll' : (arg_0: Principal, arg_1: Principal) => Promise<boolean>,
   'mint' : (arg_0: string) => Promise<bigint>,
