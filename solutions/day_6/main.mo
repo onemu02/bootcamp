@@ -35,7 +35,7 @@ actor {
         };
     };
 
-    public func show_next_token_index(): async Nat{
+    public shared({caller}) func show_next_token_index(): async Nat{
         // Debug.print("show next token index");
         return nextTokenIndex;
     };
@@ -85,4 +85,4 @@ actor {
     };
 
 
-}
+};

@@ -23,6 +23,10 @@
     "day_6": {
       "main": "day_6/main.mo",
       "type": "motoko"
+    },
+    "day_6_minter": {
+      "main": "day_6/minter.mo",
+      "type": "motoko"
     }
   },
   "defaults": {
