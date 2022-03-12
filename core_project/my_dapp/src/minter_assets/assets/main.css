@@ -21,6 +21,18 @@ form {
   align-items: baseline;
 }
 
+#minted {
+  max-width: 50vw;
+  max-height: 25vw;
+  display: block;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+
+
+
+
 button[type="submit"] {
   padding: 5px 20px;
   margin: 10px auto;

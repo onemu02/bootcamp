@@ -1,4 +1,5 @@
 import Error "mo:base/Error";
+import Buffer "mo:base/Buffer";
 import Hash "mo:base/Hash";
 import HashMap "mo:base/HashMap";
 import Nat "mo:base/Nat";
@@ -28,6 +29,19 @@ actor class DRC721(_name : Text, _symbol : Text) {
     public shared func balanceOf(p : Principal) : async ?Nat {
         return balances.get(p);
     };
+
+    public shared func balanceOfAll(p : Principal) : async [?Nat] {
+        var _entries : Buffer.Buffer<?Nat> = Buffer.Buffer<?Nat>(0);
+        for((k,v) in balances.entries()){
+            switch(k == p){
+                case (true) { _entries.add(?v) };
+                case (false) {}; 
+            };
+        };
+        return _entries.toArray();
+    };
+
+
 
     public shared func ownerOf(tokenId : T.TokenId) : async ?Principal {
         return _ownerOf(tokenId);

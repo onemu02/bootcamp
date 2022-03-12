@@ -40,6 +40,7 @@
   ],
   "dependencies": {
     "@psychedelic/plug-connect": "^0.1.4",
+    "load-svg-file": "^1.0.8",
     "resolve-cwd": "^3.0.0"
   }
 }
