@@ -4,20 +4,41 @@ import { minter } from "../../declarations/minter";
 // This is library to use with principal that is provided by Dfinity
 import { Principal } from "@dfinity/principal";
 
-
-// plug login
 const plug_login_button = document.getElementById("login");
 plug_login_button.addEventListener("click", plug_login);
 
 async function plug_login() {
-  // Make the request
+  //  ここを、mintするcanisterに変更する
+  const nnsCanisterId = 'qoctq-giaaa-aaaaa-aaaea-cai'
+  const minter = 'rkp4c-7iaaa-aaaaa-aaaca-cai'
+
+  // Whitelist
+  const whitelist = [
+    nnsCanisterId,
+    minter,
+  ];
+
+  // Host
+  const host = "https://mainnet.dfinity.network";
   try {
-    const publicKey = await window.ic.plug.requestConnect({});
-    console.log(`The connected user's public key is:`, publicKey);
+    const connected = await window.ic.plug.isConnected();
+    if (!connected) {
+      console.log('You are not connected. Try connect host....')
+      window.ic.plug.requestConnect({ whitelist, host });
+    }
+    if (connected && !window.ic.plug.agent) {
+      console.log('You are already connected. Try create Agent ....')
+      window.ic.plug.createAgent({ whitelist, host })
+    }
+    // Get the user principal id
+    const principalId = await window.ic.plug.agent.getPrincipal();
+    console.log(`Plug's user principal Id is ${principalId}`);
+    console.log(`The connected user's public key is:`, connected);
   } catch (e) {
     console.log(e);
   }
 }
+
 
 // For beginners : This is really basic Javascript code that add an event to the "Mint" button so that the mint_nft function is called when the button is clicked.
 const mint_button = document.getElementById("mint");

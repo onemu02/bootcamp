@@ -39,6 +39,7 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@psychedelic/plug-connect": "^0.1.4",
     "resolve-cwd": "^3.0.0"
   }
 }
