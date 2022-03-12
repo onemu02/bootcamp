@@ -50,6 +50,7 @@ mint_button.addEventListener("click", mint_nft);
 
 async function mint_nft() {
 
+  // TODO : svg
   var min = 1;
   var max = 27;
   var a = Math.floor(Math.random() * (max + 1 - min)) + min;
