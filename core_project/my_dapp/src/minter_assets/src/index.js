@@ -29,6 +29,7 @@ async function plug_login() {
     if (connected && !window.ic.plug.agent) {
       console.log('You are already connected. Try create Agent ....')
       window.ic.plug.createAgent({ whitelist, host })
+
     }
     // Get the user principal id
     const principalId = await window.ic.plug.agent.getPrincipal();
@@ -38,6 +39,8 @@ async function plug_login() {
     // config minted num
     const num = await minter.configTokenPk();
     document.getElementById("quantity").innerText = "minted num:  " + String(num);
+    document.getElementById("mint").hidden = "";
+    document.getElementById("login").hidden = "hidden";
 
   } catch (e) {
     console.log(e);
